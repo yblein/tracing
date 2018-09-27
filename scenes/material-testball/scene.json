@@ -1,0 +1,187 @@
+{
+    "media": [],
+    "bsdfs": [
+        {
+            "name": "Material",
+            "type": "smooth_coat",
+            "ior": 1.5,
+            "sigma_a": [0.02, 0.25, 0.55],
+            "thickness": 5.0,
+            "substrate": {
+                "name": "",
+                "type": "rough_conductor",
+                "albedo": 0.99,
+                "material": "Al",
+                "roughness": 0.1
+            }
+        },
+        {
+            "name": "Stand",
+            "albedo": 0.2,
+            "type": "lambert"
+        },
+        {
+            "name": "Floor",
+            "albedo": {
+                "type": "checker",
+                "on_color": [
+                    0.725,
+                    0.71,
+                    0.68
+                ],
+                "off_color": [
+                    0.325,
+                    0.31,
+                    0.25
+                ],
+                "res_u": 20,
+                "res_v": 20
+            },
+            "type": "lambert"
+        }
+    ],
+    "primitives": [
+        {
+            "bump_strength": 1,
+            "transform": {
+                "position": [
+                    0,
+                    0,
+                    1.17369
+                ],
+                "rotation": [
+                    0,
+                    -67.2614,
+                    0
+                ]
+            },
+            "emission": "textures/envmap.hdr",
+            "type": "infinite_sphere",
+            "sample": true,
+            "bsdf": {
+                "albedo": 1,
+                "type": "null"
+            }
+        },
+        {
+            "transform": {
+                "position": [
+                    -0.708772,
+                    0,
+                    -0.732108
+                ],
+                "scale": 5.43618,
+                "rotation": [
+                    0,
+                    46.1511,
+                    180
+                ]
+            },
+            "bump_strength": 1,
+            "type": "quad",
+            "bsdf": "Floor"
+        },
+        {
+            "transform": {
+                "position": [
+                    0.0571719,
+                    0.213656,
+                    0.0682078
+                ],
+                "scale": 0.482906
+            },
+            "bump_strength": 1,
+            "type": "mesh",
+            "file": "models/Mesh001.obj",
+            "smooth": true,
+            "backface_culling": false,
+            "recompute_normals": false,
+            "bsdf": "Material"
+        },
+        {
+            "transform": {
+                "position": [
+                    0.156382,
+                    0.777229,
+                    0.161698
+                ],
+                "scale": 0.482906
+            },
+            "bump_strength": 1,
+            "type": "mesh",
+            "file": "models/Mesh002.obj",
+            "smooth": true,
+            "backface_culling": false,
+            "recompute_normals": false,
+            "bsdf": "Material"
+        },
+        {
+            "transform": {
+                "position": [
+                    0.110507,
+                    0.494301,
+                    0.126194
+                ],
+                "scale": 0.482906
+            },
+            "bump_strength": 1,
+            "type": "mesh",
+            "file": "models/Mesh000.obj",
+            "smooth": true,
+            "backface_culling": false,
+            "recompute_normals": false,
+            "bsdf": "Stand"
+        }
+    ],
+    "camera": {
+        "tonemap": "filmic",
+        "resolution": [
+            1280,
+            720
+        ],
+        "reconstruction_filter": "tent",
+        "transform": {
+            "position": [
+                3.04068,
+                3.17153,
+                3.20454
+            ],
+            "look_at": [
+                0.118789,
+                0.473398,
+                0.161081
+            ],
+            "up": [
+                0,
+                1,
+                0
+            ]
+        },
+        "type": "pinhole",
+        "fov": 35,
+		"focus_distance": 4.6,
+		"aperture_size": 0.04
+    },
+    "integrator": {
+        "type": "path_tracer",
+        "min_bounces": 0,
+        "max_bounces": 64,
+        "enable_light_sampling": true,
+        "enable_volume_light_sampling": true,
+        "enable_consistency_checks": false,
+        "enable_two_sided_shading": true
+    },
+    "renderer": {
+        "output_file": "material-testball.png",
+        "resume_render_file": "RenderState.dat",
+        "overwrite_output_files": true,
+        "adaptive_sampling": true,
+        "enable_resume_render": false,
+        "stratified_sampler": true,
+        "scene_bvh": true,
+        "spp": 64,
+        "spp_step": 16,
+        "checkpoint_interval": "0",
+        "hdr_output_file": "material-testball.exr"
+    }
+}
